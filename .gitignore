@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Packed artifacts
+*.tgz
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Session-internal handoff (local machine paths; not part of the package)
+HANDOFF.md
