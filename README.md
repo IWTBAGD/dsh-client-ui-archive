@@ -38,7 +38,13 @@ A third-party client theme for the **DeepSeek Harness Web GUI**: warm-ivory text
 
 ## 安装 / Installation
 
-本插件是 DSH 客户端插件（`dsh.client.platform: "web"`），通过 profile 的 `cordis.patch.yml` 接线安装。运行时依赖（`@deepseek-ai/dsh-client-ui-renderer` / `-sidebar` / `-conversation` / `-brand-official`）由 DSH web app 提供，插件本身不打包 `node_modules`。
+本插件是一个 DSH **组合包（bundle）**，已在 `package.json` 声明 `dsh.bundle` 并附带 `cordis.patch.yml`，可直接通过插件管理器安装。运行时依赖（`@deepseek-ai/dsh-client-ui-renderer` / `-sidebar` / `-conversation` / `-brand-official`）由 DSH web app 提供，插件本身不打包 `node_modules`。
+
+**方式一：插件管理器（推荐）**
+
+在 DSH 的「插件」面板 → 添加插件，输入本仓库地址（例如 `https://github.com/IWTBAGD/dsh-client-ui-archive.git`），按提示安装并重启。
+
+**方式二：手动接线**
 
 1. 让插件包可被解析（二选一）：
    - **本地 `file:` 依赖**：把本仓库放进 profile 的 `vendor/` 目录，用 `file:` 依赖指向它；
@@ -62,7 +68,8 @@ A third-party client theme for the **DeepSeek Harness Web GUI**: warm-ivory text
 
 ```
 dsh-client-ui-archive/
-├─ package.json          # name / version / exports / dsh.client 声明
+├─ package.json          # name / version / exports / dsh.bundle + dsh.client 声明
+├─ cordis.patch.yml      # 组合包接线：insert 本插件
 ├─ LICENSE               # MIT
 └─ lib/
    ├─ index.js           # 宿主侧空壳：export function apply() {}
